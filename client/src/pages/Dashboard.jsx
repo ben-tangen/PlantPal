@@ -1,7 +1,12 @@
 import React from "react";
 
 function Dashboard() {
-  return <h1>Dashboard</h1>;
+  return (
+    <div style={{ padding: "20px" }}>
+      <h1>Dashboard</h1>
+      <p>Welcome to your plant dashboard! Use the navigation to manage your plants.</p>
+    </div>
+  );
 }
 
 export default Dashboard;

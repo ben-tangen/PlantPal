@@ -1,32 +1,26 @@
-{% extends "registration/base.html"%}
+{% extends "registration/base.html" %}
 
 {% block content %}
+<h1>Create Account</h1>
 <form action="/registration/sign_up/" method="post">
   {% csrf_token %}
   <div>
-    <label>
-      First Name
-      <input type="text" name="first_name">
-    </label>
+    <label for="first_name">First Name</label>
+    <input type="text" id="first_name" name="first_name" required>
   </div>
   <div>
-    <label>
-      Last Name
-      <input type="text" name="last_name">
-    </label>
+    <label for="last_name">Last Name</label>
+    <input type="text" id="last_name" name="last_name" required>
   </div>
   <div>
-    <label>
-      Email
-      <input type="email" name="email">
-    </label>
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
   </div>
   <div>
-    <label>
-      Password
-      <input type="password" name="password">
-    </label>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required>
   </div>
-  <button>Create Account</button>
+  <button type="submit">Create Account</button>
 </form>
+<a href="/registration/sign_in/">Already have an account? Sign In</a>
 {% endblock %}

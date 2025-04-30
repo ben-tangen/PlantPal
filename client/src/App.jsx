@@ -9,23 +9,15 @@ function Navigation() {
   const navigate = useNavigate(); // Use the useNavigate hook here
 
   async function logout() {
-    try {
-      const response = await fetch("/registration/logout/", {
-        method: "POST",
-        credentials: "same-origin", // Include cookies
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+    const res = await fetch("/registration/logout/", {
+      credentials: "same-origin", // include cookies!
+    });
 
-      if (response.ok) {
-        // Redirect to the login page after successful logout
-        window.location.href = "/registration/login/";
-      } else {
-        console.error("Logout failed");
-      }
-    } catch (error) {
-      console.error("An error occurred during logout:", error);
+    if (res.ok) {
+      // navigate away from the single page app!
+      window.location = "/registration/sign_in/";
+    } else {
+      // handle logout failed!
     }
   }
 
@@ -59,3 +51,6 @@ function App() {
 }
 
 export default App;
+
+
+

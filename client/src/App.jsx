@@ -8,6 +8,27 @@ import PhotoJournal from "./pages/PhotoJournal";
 function Navigation() {
   const navigate = useNavigate(); // Use the useNavigate hook here
 
+  async function logout() {
+    try {
+      const response = await fetch("/registration/logout/", {
+        method: "POST",
+        credentials: "same-origin", // Include cookies
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        // Redirect to the login page after successful logout
+        window.location.href = "/registration/login/";
+      } else {
+        console.error("Logout failed");
+      }
+    } catch (error) {
+      console.error("An error occurred during logout:", error);
+    }
+  }
+
   return (
     <nav className="navbar">
       <button onClick={() => navigate("/")}>Dashboard</button>
@@ -15,6 +36,7 @@ function Navigation() {
       <button onClick={() => navigate("/edit-plant")}>Edit Plant</button>
       <button onClick={() => navigate("/care-log")}>Care Log</button>
       <button onClick={() => navigate("/photo-journal")}>Photo Journal</button>
+      <button onClick={logout}>Logout</button> {/* Logout button */}
     </nav>
   );
 }
